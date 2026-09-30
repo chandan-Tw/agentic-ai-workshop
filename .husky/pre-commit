@@ -1,0 +1,16 @@
+#!/bin/bash
+# Pre-commit hook: Run sensors before allowing commit
+
+set -e
+
+echo "🔍 Running pre-commit sensors..."
+
+# Sensor 1: Branch name convention
+echo "  Checking branch name..."
+scripts/branch-name-check.sh
+
+# Sensor 2: REASONS canvas structure
+echo "  Checking REASONS canvas structure..."
+scripts/reasons-lint.sh
+
+echo "✅ All sensors passed. Proceeding with commit."
